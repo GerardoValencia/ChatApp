@@ -1,11 +1,13 @@
 package com.example.chatapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.chatapp.R
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +24,9 @@ class Chats : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var user = ""
+    private var db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,6 +39,7 @@ class Chats : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val myValue = this.requireArguments().getString("message")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chats, container, false)
     }
